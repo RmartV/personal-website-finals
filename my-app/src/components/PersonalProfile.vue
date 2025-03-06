@@ -4,14 +4,14 @@
         <div class="circle"></div>
   
         <header>
-          <ul class="navigation">
-            <li><a href="#" id="educationLink">Education</a></li>
-            <li><a href="#" id="goalsLink">Goals</a></li>
-            <li><a href="#" id="hobbiesLink">Hobbies</a></li>
-            <li><a href="#" id="schoolsLink">Schools</a></li>
-            <li><RouterLink to="/comments">Comments</RouterLink></li>
-          </ul>
-        </header>
+  <ul class="navigation">
+    <li><a href="#" @click.prevent="openModal('education')">Education</a></li>
+    <li><a href="#" @click.prevent="openModal('goals')">Goals</a></li>
+    <li><a href="#" @click.prevent="openModal('hobbies')">Hobbies</a></li>
+    <li><a href="#" @click.prevent="openModal('schools')">Schools</a></li>
+    <li><RouterLink to="/comments">Comments</RouterLink></li>
+  </ul>
+</header>
   
         <div v-if="modals.about" class="modal" id="aboutModal">
           <div class="modal-content">
