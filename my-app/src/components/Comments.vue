@@ -2,7 +2,6 @@
   <div class="container">
     <button class="back-button" @click="goBack">Return to Home</button>
 
-    
     <div class="comments-container">
       <div class="comment-form">
         <h2>Leave a Comment</h2>
@@ -15,7 +14,7 @@
           </div>
         </form>
       </div>
-  
+
       <div class="comment-list" id="commentList">
         <div v-for="comment in comments" :key="comment.id" class="comment">
           <div class="comment-header">
@@ -34,7 +33,6 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { supabase } from '../lib/supabaseClient';
 
-
 const router = useRouter();
 const name = ref('');
 const comment = ref('');
@@ -44,7 +42,6 @@ const tableName = 'comments';
 const goBack = () => {
   router.push('/');
 };
-
 
 function formatDate(dateString) {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -94,43 +91,71 @@ onMounted(() => {
 });
 </script>
 
-<style>
+<style scoped>
 .container {
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
+  padding: 30px;
+  max-width: 700px;
+  margin: 30px auto;
+  background: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .back-button {
   background-color: #3498db;
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 12px 20px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   display: inline-block;
   font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .back-button:hover {
   background-color: #2980b9;
 }
 
+.comments-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .comment-form {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 5px;
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.comment-form h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.comment-form input,
+.comment-form textarea {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
 .submit-btn {
   background: #2ecc71;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 12px 20px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 6px;
   margin-top: 10px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .submit-btn:hover {
@@ -138,8 +163,10 @@ onMounted(() => {
 }
 
 .status-message {
-  margin-top: 10px;
-  font-weight: bold;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
 }
 
 .comment-list {
@@ -147,16 +174,32 @@ onMounted(() => {
 }
 
 .comment {
-  background: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  background: #f0f8ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .comment-header {
   display: flex;
   justify-content: space-between;
-  font-weight: bold;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.comment-name {
+  color: #3498db;
+}
+
+.comment-date {
+  font-size: 0.9em;
+  color: #777;
+}
+
+.comment p {
+  margin: 0;
+  color: #333;
 }
 </style>

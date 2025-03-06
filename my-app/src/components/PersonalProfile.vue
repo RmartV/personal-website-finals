@@ -5,111 +5,115 @@
   
         <header>
           <ul class="navigation">
-            <li><a href="#" id="educationLink">Education</a></li>
-            <li><a href="#" id="goalsLink">Goals</a></li>
-            <li><a href="#" id="hobbiesLink">Hobbies</a></li>
-            <li><a href="#" id="schoolsLink">Schools</a></li>
-            <li><RouterLink to="/comments">Comments</RouterLink></li>
+            <li><a href="#" @click.prevent="openModal('educationModal')">Education</a></li>
+            <li><a href="#" @click.prevent="openModal('goalsModal')">Goals</a></li>
+            <li><a href="#" @click.prevent="openModal('hobbiesModal')">Hobbies</a></li>
+            <li><a href="#" @click.prevent="openModal('schoolsModal')">Schools</a></li>
+            <li><router-link to="/comments">Comments</router-link></li>
           </ul>
         </header>
   
-        <div v-if="modals.about" class="modal" id="aboutModal">
-          <div class="modal-content">
-            <h2>About Me</h2>
-            <p>My name is Ryan Elijah Luar and this is my experience throughout my course. <br> <br> My Experience from my course has a lot of ups and downs. I learned how to code and what are their functions and what are their purposes and also I crammed a lot of subjects during my freshman due to being overwhelmed. But overall, taking IT course is a great choice. <br> I live in Taguig City, I'm Currently 19 years old and I am the youngest member of the family. </p>
-            <button class="close-btn" @click="closeModal('about')">Close</button>
-          </div>
-        </div>
-  
-        <div v-if="modals.education" class="modal" id="educationModal">
-          <div class="modal-content">
-            <h2>Education</h2>
-            <p>I am currently studying at Asia Pacific College, pursuing a Bachelor of Science in Information Technology, specializing in Mobile and Internet Applications.</p>
-            <button class="close-btn" @click="closeModal('education')">Close</button>
-          </div>
-        </div>
-  
-        <div v-if="modals.goals" class="modal" id="goalsModal">
-          <div class="modal-content">
-            <h2>Goals in Life</h2>
-            <ol class="goals-list">
-              <li>To get rich</li>
-              <li>To have my dream house and bike</li>
-              <li>To graduate college</li>
-            </ol>
-            <button class="close-btn" @click="closeModal('goals')">Close</button>
-          </div>
-        </div>
-  
-        <div v-if="modals.hobbies" class="modal" id="hobbiesModal">
-          <div class="modal-content">
-            <h2>Hobbies & Interests</h2>
-            <table class="hobbies-table">
-              <thead>
-                <tr>
-                  <th>Hobbies</th>
-                  <th>Interests</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Playing Basketball</td>
-                  <td>Dancing</td>
-                </tr>
-                <tr>
-                  <td>Riding Motorcycle</td>
-                  <td>Exploring</td>
-                </tr>
-                <tr>
-                  <td>Going to the gym</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-            <button class="close-btn" @click="closeModal('hobbies')">Close</button>
-          </div>
-        </div>
-  
-        <div v-if="modals.schools" class="modal" id="schoolsModal">
-          <div class="modal-content">
-            <h2>Education & Achievements</h2>
-            <table class="schools-table">
-              <thead>
-                <tr>
-                  <th>Education / Achievements</th>
-                  <th>Year</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Sto Niño Catholic School (Elementary)</td>
-                  <td>2015 - 2016</td>
-                </tr>
-                <tr>
-                  <td>Sto Niño Catholic School (JHS)</td>
-                  <td>2017 - 2021</td>
-                </tr>
-                <tr>
-                  <td>With Honors (JHS)</td>
-                  <td>2020 - 2021</td>
-                </tr>
-                <tr>
-                  <td>Asia Pacific College (SHS)</td>
-                  <td>2021 - 2023</td>
-                </tr>
-                <tr>
-                  <td>Asia Pacific College (College)</td>
-                  <td>2023 - Current</td>
-                </tr>
-                <tr>
-                  <td>Asia Pacific College Honor Student</td>
-                  <td>2023 - 2024</td>
-                </tr>
-              </tbody>
-            </table>
-            <button class="close-btn" @click="closeModal('schools')">Close</button>
-          </div>
-        </div>
+         <!-- About Modal -->
+    <div class="modal" :class="{ show: activeModal === 'aboutModal' }" id="aboutModal">
+      <div class="modal-content">
+        <h2>About Me</h2>
+        <p>My name is Ryan Elijah Luar and this is my experience throughout my course. <br> <br> My Experience from my course has a lot of ups and downs. I learned how to code and what are their functions and what are their purposes and also I crammed a lot of subjects during my freshman due to being overwhelmed. But overall, taking IT course is a great choice. <br> I live in Taguig City, I'm Currently 19 years old and I am the youngest member of the family.</p>
+        <button class="close-btn" @click="closeModal">Close</button>
+      </div>
+    </div>
+
+    <!-- Education Modal -->
+    <div class="modal" :class="{ show: activeModal === 'educationModal' }" id="educationModal">
+      <div class="modal-content">
+        <h2>Education</h2>
+        <p>I am currently studying at Asia Pacific College, pursuing a Bachelor of Science in Information Technology, specializing in Mobile and Internet Applications.</p>
+        <button class="close-btn" @click="closeModal">Close</button>
+      </div>
+    </div>
+
+    <!-- Goals Modal -->
+    <div class="modal goals-modal" :class="{ show: activeModal === 'goalsModal' }" id="goalsModal">
+  <div class="modal-content">
+    <h2>Goals in Life</h2>
+    <ol class="goals-list">
+      <li>To get rich</li>
+      <li>To have my dream house and bike</li>
+      <li>To graduate college</li>
+    </ol>
+    <button class="close-btn" @click="closeModal">Close</button>
+  </div>
+</div>
+
+<div class="modal hobbies-modal" :class="{ show: activeModal === 'hobbiesModal' }" id="hobbiesModal">
+  <div class="modal-content">
+    <h2>Hobbies & Interests</h2>
+    <table class="hobbies-table">
+      <thead>
+        <tr>
+          <th>Hobbies</th>
+          <th>Interests</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Playing Basketball</td>
+          <td>Dancing</td>
+        </tr>
+        <tr>
+          <td>Riding Motorcycle</td>
+          <td>Exploring</td>
+        </tr>
+        <tr>
+          <td>Going to the gym</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="close-btn" @click="closeModal">Close</button>
+  </div>
+</div>
+
+    <!-- Schools Modal -->
+    <div class="modal schools-modal" :class="{ show: activeModal === 'schoolsModal' }" id="schoolsModal">
+  <div class="modal-content">
+    <h2>Education & Achievements</h2>
+    <table class="schools-table">
+      <thead>
+        <tr>
+          <th>Education / Achievements</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sto Niño Catholic School (Elementary)</td>
+          <td>2015 - 2016</td>
+        </tr>
+        <tr>
+          <td>Sto Niño Catholic School (JHS)</td>
+          <td>2017 - 2021</td>
+        </tr>
+        <tr>
+          <td>With Honors (JHS)</td>
+          <td>2020 - 2021</td>
+        </tr>
+        <tr>
+          <td>Asia Pacific College (SHS)</td>
+          <td>2021 - 2023</td>
+        </tr>
+        <tr>
+          <td>Asia Pacific College (College)</td>
+          <td>2023 - Current</td>
+        </tr>
+        <tr>
+          <td>Asia Pacific College Honor Student</td>
+          <td>2023 - 2024</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="close-btn" @click="closeModal">Close</button>
+  </div>
+</div>
   
         <div class="content">
           <div class="textBox">
@@ -149,89 +153,30 @@
   import "swiper/css/effect-cards";
   import { RouterLink } from 'vue-router';
   
-  const modals = ref({
-    about: false,
-    education: false,
-    goals: false,
-    hobbies: false,
-    schools: false,
-  });
+  const activeModal = ref(null);
   
-  const openModal = (modalName) => {
-    modals.value[modalName] = true;
+  const openModal = (modalId) => {
+    activeModal.value = modalId;
   };
   
-  const closeModal = (modalName) => {
-    modals.value[modalName] = false;
+  const closeModal = () => {
+    activeModal.value = null;
   };
   
-  document.addEventListener('DOMContentLoaded', function() {
-    function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.style.display = 'block';
-            setTimeout(() => {
-                modal.classList.add('show');
-            }, 10);
-        }
-    }
-
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.remove('show');
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 300);
-        }
-    }
-
-    document.getElementById('educationLink').addEventListener('click', function(event) {
-        event.preventDefault();
-        openModal('educationModal');
-    });
-
-    document.getElementById('goalsLink').addEventListener('click', function(event) {
-        event.preventDefault();
-        openModal('goalsModal');
-    });
-
-    document.getElementById('hobbiesLink').addEventListener('click', function(event) {
-        event.preventDefault();
-        openModal('hobbiesModal');
-    });
-
-    document.getElementById('schoolsLink').addEventListener('click', function(event) {
-        event.preventDefault();
-        openModal('schoolsModal');
-    });
-
-    document.querySelectorAll('.close-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const modal = this.closest('.modal');
-            if (modal) {
-                closeModal(modal.id);
-            }
-        });
-    });
-
- 
-    document.getElementById('learnMoreLink').addEventListener('click', function(event) {
+  onMounted(() => {
+    // For the learnMoreLink event listener (if it exists in your template)
+    const learnMoreLink = document.getElementById('learnMoreLink');
+    if (learnMoreLink) {
+      learnMoreLink.addEventListener('click', (event) => {
         event.preventDefault();
         openModal('aboutModal');
-    });
-
-    var swiper = new Swiper(".mySwiper", {
-    effect: "cards",
-    grabCursor: true,
-    loop: true,
+      });
+    }
   });
-
-});
   </script>
 
 <style>
-/* General Styles */
+
 body {
     background: #A9A9A9;
     margin: 0;
@@ -433,22 +378,23 @@ header .navigation li a {
 
 /* Modal */
 .modal {
-    display: none;
     position: fixed;
-    z-index: 1000;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
     justify-content: center;
     align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease;
+    z-index: 1000;
 }
 
 .modal.show {
+    visibility: visible;
     opacity: 1;
     display: flex;
 }
@@ -462,6 +408,33 @@ header .navigation li a {
     max-width: 850px;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.modal-content p,
+.modal-content ol,
+.modal-content table {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: #555;
 }
 
 /* Close Button */
@@ -485,67 +458,123 @@ header .navigation li a {
     transform: translateY(1px);
 }
 
-/* Goals & Hobbies */
-.goals-list, .hobbies-table, .schools-table {
+ /* Goals Modal Styles */
+ .goals-modal .modal-content {
+    text-align: center; /* Center align all text */
+    background-color: #f0f8ff; /* Light blue background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+  }
+
+  .goals-modal .goals-list {
+    list-style-type: none; /* Remove default list bullets */
+    padding: 0;
+    margin: 20px 0;
+  }
+
+  .goals-modal .goals-list li {
+    background-color: #b0c4de; /* Light steel blue list items */
+    color: white; /* White text for contrast */
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+
+  /* Hobbies Modal Styles */
+  .hobbies-modal .modal-content {
+    text-align: center;
+    background-color: #f8f8ff; /* Very light gray background */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+  }
+
+  .hobbies-modal .hobbies-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
-}
+    margin: 20px 0;
+  }
 
-.goals-list li, .hobbies-table th, .hobbies-table td, .schools-table th, .schools-table td {
-    padding: 15px;
+  .hobbies-modal .hobbies-table th,
+  .hobbies-modal .hobbies-table td {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+  }
+
+  .hobbies-modal .hobbies-table th {
+    background-color: #e0e0e0; /* Light gray header */
+  }
+
+  /* Shared Modal Styles */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal.show {
+    display: flex;
+  }
+
+  .close-btn {
+    background-color: #007bff; /* Blue button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .close-btn:hover {
+    background-color: #0056b3;
+  }
+
+
+  /* Schools Modal Styles */
+  .schools-modal .modal-content {
     text-align: center;
-    font-size: 16px;
-}
+    background-color: #f8f0e3; /* Light beige background */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 90%;
+    max-width: 700px;
+  }
 
-.goals-list li {
-    background-color: #FAA0A0;
-    border-radius: 10px;
-    color: #fff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+  .schools-modal .schools-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
 
-.goals-list li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
+  .schools-modal .schools-table th,
+  .schools-modal .schools-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center; /* Center align table data */
+  }
 
-.schools-table th {
-    background-color: #F88379;
-    font-weight: 700;
-}
+  .schools-modal .schools-table thead th {
+    background-color: #d2b48c; /* Tan header */
+    color: white;
+    font-weight: 600;
+  }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    section {
-        padding: 50px 20px;
-    }
+  .schools-modal .schools-table tbody tr:nth-child(even) {
+    background-color: #f2e6d9; /* Lighter beige for even rows */
+  }
 
-    .content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .content .textBox {
-        max-width: 90%;
-    }
-
-    .content .textBox h2 {
-        font-size: 32px;
-    }
-
-    .content .textBox p {
-        font-size: 14px;
-    }
-
-    .content .imagebox {
-        max-width: 300px;
-    }
-}
-
-@media (max-width: 600px) {
-    .modal-content {
-        padding: 20px;
-    }
-}
 </style>
