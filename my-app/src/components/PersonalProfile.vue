@@ -1,144 +1,41 @@
 <template>
-    <section>
-      <div class="circle"></div>
+    <body>
+      <section>
+        <div class="circle"></div>
   
-      <header>
-        <ul class="navigation">
-          <li><a href="#" id="educationLink">Education</a></li>
-          <li><a href="#" id="goalsLink">Goals </a></li>
-          <li><a href="#" id="hobbiesLink">Hobbies </a></li>
-          <li><a href="#" id="schoolsLink">Schools </a></li>
-          <li><RouterLink to="/comments">Comments</RouterLink></li>
-        </ul>
-      </header>
   
-      <div class="modal" id="aboutModal">
-        <div class="modal-content">
-          <h2>About Me</h2>
-          <p>My name is Ryan Elijah Luar and this is my experience throughout my course. <br> <br> My Experience from my course has a lot of ups and downs...</p>
-          <button class="close-btn">Close</button>
+ 
+  
+        <div class="content">
+          <div class="textBox">
+            <h2>Welcome to my Homepage!</h2>
+            <p>
+              I am a student in Asia Pacific College taking Bachelor of Science in Information Technology specialized in Mobile and Internet Applications ...
+              <br />
+              <a id="learnMoreLink" href="" class="buttonlearn">Learn more about me!</a>
+            </p>
+            <ul class="sci">
+              <li><a href="https://www.facebook.com/ryanelijah.luar/"><img src="../components/images/efbi.png" alt="Facebook" /></a></li>
+              <li><a href="https://www.linkedin.com/in/ryan-elijah-luar-a99171250/"><img src="../components/images/linkedin.png" alt="LinkedIn" /></a></li>
+              <li><a href="https://github.com/RyElijah"><img src="../components/images/github1.png" alt="GitHub" /></a></li>
+            </ul>
+          </div>
+  
+          <div class="imagebox">
+            <swiper :modules="[EffectCards]" effect="cards" :grabCursor="true" :loop="true" class="mySwiper">
+              <swiper-slide><img src="../components/images/ryanpic1.jpg" alt="Image 1" /></swiper-slide>
+              <swiper-slide><img src="../components/images/ryanpic2.jpg" alt="Image 2" /></swiper-slide>
+              <swiper-slide><img src="../components/images/ryanpic3.jpg" alt="Image 3" /></swiper-slide>
+              <swiper-slide><img src="../components/images/ryanpic6.jpg" alt="Image 4" /></swiper-slide>
+            </swiper>
+          </div>
         </div>
-      </div>
-  
-      <div class="modal" id="educationModal">
-        <div class="modal-content">
-          <h2>Education</h2>
-          <p>I am currently studying at Asia Pacific College, pursuing a Bachelor of Science in Information Technology...</p>
-          <button class="close-btn">Close</button>
-        </div>
-      </div>
-  
-      <div class="modal" id="goalsModal">
-        <div class="modal-content">
-          <h2>Goals in Life</h2>
-          <ol class="goals-list">
-            <li>To get rich</li>
-            <li>To have my dream house and bike</li>
-            <li>To graduate college</li>
-          </ol>
-          <button class="close-btn">Close</button>
-        </div>
-      </div>
-  
-      <div class="modal" id="hobbiesModal">
-        <div class="modal-content">
-          <h2>Hobbies & Interests</h2>
-          <table class="hobbies-table">
-            <thead>
-              <tr>
-                <th>Hobbies</th>
-                <th>Interests</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Playing Basketball</td>
-                <td>Dancing</td>
-              </tr>
-              <tr>
-                <td>Riding Motorcycle</td>
-                <td>Exploring</td>
-              </tr>
-              <tr>
-                <td>Going to the gym</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-          <button class="close-btn">Close</button>
-        </div>
-      </div>
-  
-      <div class="modal" id="schoolsModal">
-        <div class="modal-content">
-          <h2>Education & Achievements</h2>
-          <table class="schools-table">
-            <thead>
-              <tr>
-                <th>Education / Achievements</th>
-                <th>Year</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Sto Niño Catholic School (Elementary)</td>
-                <td>2015 - 2016</td>
-              </tr>
-              <tr>
-                <td>Sto Niño Catholic School (JHS)</td>
-                <td>2017 - 2021</td>
-              </tr>
-              <tr>
-                <td>With Honors (JHS)</td>
-                <td>2020 - 2021</td>
-              </tr>
-              <tr>
-                <td>Asia Pacific College (SHS)</td>
-                <td>2021 - 2023</td>
-              </tr>
-              <tr>
-                <td>Asia Pacific College (College)</td>
-                <td>2023 - Current</td>
-              </tr>
-              <tr>
-                <td>Asia Pacific College Honor Student</td>
-                <td>2023 - 2024</td>
-              </tr>
-            </tbody>
-          </table>
-          <button class="close-btn">Close</button>
-        </div>
-      </div>
-  
-      <div class="content">
-        <div class="textBox">
-          <h2>Welcome to my Homepage!</h2>
-          <p>
-            I am a student in Asia Pacific College taking Bachelor of Science in Information Technology specialized in Mobile and Internet Applications...
-            <br />
-            <a id="learnMoreLink" href="" class="buttonlearn">Learn more about me!</a>
-          </p>
-          <ul class="sci">
-            <li><a href="https://www.facebook.com/ryanelijah.luar/"><img src="../components/images/efbi.png" alt="Facebook" /></a></li>
-            <li><a href="https://www.linkedin.com/in/ryan-elijah-luar-a99171250/"><img src="../components/images/linkedin.png" alt="LinkedIn" /></a></li>
-            <li><a href="https://github.com/RyElijah"><img src="../components/images/github1.png" alt="GitHub" /></a></li>
-          </ul>
-        </div>
-  
-        <div class="imagebox">
-          <swiper :modules="[EffectCards]" effect="cards" :grabCursor="true" :loop="true" class="mySwiper">
-            <swiper-slide><img src="../components/images/ryanpic1.jpg" alt="Image 1" /></swiper-slide>
-            <swiper-slide><img src="../components/images/ryanpic2.jpg" alt="Image 2" /></swiper-slide>
-            <swiper-slide><img src="../components/images/ryanpic3.jpg" alt="Image 3" /></swiper-slide>
-            <swiper-slide><img src="../components/images/ryanpic6.jpg" alt="Image 4" /></swiper-slide>
-          </swiper>
-        </div>
-      </div>
+      </section>
   
       <Comments />
-    </section>
+
+    </body>
   </template>
-  
   
   <script setup>
   import { Swiper, SwiperSlide } from "swiper/vue";
