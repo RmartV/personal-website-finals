@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import PersonalProfile from '@/components/PersonalProfile.vue';
-import Comments from '@/components/Comments.vue'
+import PersonalProfile from '@/views/PersonalProfile.vue';
+import Comments from '@/views/Comments.vue'
 
 const routes = [
     { path: '/', component: PersonalProfile }, 

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <button @click="goBack" class="back-button">&#8592; Back to Profile</button>
+    <button class="back-button" @click="navigateTo('/')"></button>
     
     <div class="comments-container">
       <div class="comment-form">
