@@ -12,106 +12,104 @@
             <li><RouterLink to="/comments">Comments</RouterLink></li>
           </ul>
         </header>
-
-        <div class="modal" id="aboutModal">
-  <div class="modal-content">
-      <h2>About Me</h2>
-      <p>My name is Ryan Elijah Luar and this is my experience throughout my course. <br> <br> My Experience from my course has a lot of ups and downs. I learned how to code and what are their functions and what are their purposes and also I crammed a lot of subjects during my freshman due to being overwhelmed. But overall, taking IT course is a great choice. <br> I live in Taguig City, I'm Currently 19 years old and I am the youngest member of the family. </p>
-      <button class="close-btn">Close</button>
-  </div>
-</div>
-
-<div class="modal" id="educationModal">
-  <div class="modal-content">
-      <h2>Education</h2>
-      <p>I am currently studying at Asia Pacific College, pursuing a Bachelor of Science in Information Technology, specializing in Mobile and Internet Applications.</p>
-      <button class="close-btn">Close</button>
-  </div>
-</div>
-
-<div class="modal" id="goalsModal">
-  <div class="modal-content">
-      <h2>Goals in Life</h2>
-      <ol class="goals-list">
-          <li>To get rich</li>
-          <li>To have my dream house and bike</li>
-          <li>To graduate college</li>
-      </ol>
-      <button class="close-btn">Close</button>
-  </div>
-</div>
-
-<div class="modal" id="hobbiesModal">
-  <div class="modal-content">
-      <h2>Hobbies & Interests</h2>
-      <table class="hobbies-table">
-          <thead>
-              <tr>
+  
+        <div v-if="modals.about" class="modal" id="aboutModal">
+          <div class="modal-content">
+            <h2>About Me</h2>
+            <p>My name is Ryan Elijah Luar and this is my experience throughout my course. <br> <br> My Experience from my course has a lot of ups and downs. I learned how to code and what are their functions and what are their purposes and also I crammed a lot of subjects during my freshman due to being overwhelmed. But overall, taking IT course is a great choice. <br> I live in Taguig City, I'm Currently 19 years old and I am the youngest member of the family. </p>
+            <button class="close-btn" @click="closeModal('about')">Close</button>
+          </div>
+        </div>
+  
+        <div v-if="modals.education" class="modal" id="educationModal">
+          <div class="modal-content">
+            <h2>Education</h2>
+            <p>I am currently studying at Asia Pacific College, pursuing a Bachelor of Science in Information Technology, specializing in Mobile and Internet Applications.</p>
+            <button class="close-btn" @click="closeModal('education')">Close</button>
+          </div>
+        </div>
+  
+        <div v-if="modals.goals" class="modal" id="goalsModal">
+          <div class="modal-content">
+            <h2>Goals in Life</h2>
+            <ol class="goals-list">
+              <li>To get rich</li>
+              <li>To have my dream house and bike</li>
+              <li>To graduate college</li>
+            </ol>
+            <button class="close-btn" @click="closeModal('goals')">Close</button>
+          </div>
+        </div>
+  
+        <div v-if="modals.hobbies" class="modal" id="hobbiesModal">
+          <div class="modal-content">
+            <h2>Hobbies & Interests</h2>
+            <table class="hobbies-table">
+              <thead>
+                <tr>
                   <th>Hobbies</th>
                   <th>Interests</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
                   <td>Playing Basketball</td>
                   <td>Dancing</td>
-              </tr>
-              <tr>
+                </tr>
+                <tr>
                   <td>Riding Motorcycle</td>
                   <td>Exploring</td>
-              </tr>
-              <tr>
+                </tr>
+                <tr>
                   <td>Going to the gym</td>
                   <td></td>
-              </tr>
-          </tbody>
-      </table>
-      <button class="close-btn">Close</button>
-  </div>
-</div>
-
-<div class="modal" id="schoolsModal">
-  <div class="modal-content">
-      <h2>Education & Achievements</h2>
-      <table class="schools-table">
-          <thead>
-              <tr>
+                </tr>
+              </tbody>
+            </table>
+            <button class="close-btn" @click="closeModal('hobbies')">Close</button>
+          </div>
+        </div>
+  
+        <div v-if="modals.schools" class="modal" id="schoolsModal">
+          <div class="modal-content">
+            <h2>Education & Achievements</h2>
+            <table class="schools-table">
+              <thead>
+                <tr>
                   <th>Education / Achievements</th>
                   <th>Year</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
                   <td>Sto Niño Catholic School (Elementary)</td>
                   <td>2015 - 2016</td>
-              </tr>
-              <tr>
+                </tr>
+                <tr>
                   <td>Sto Niño Catholic School (JHS)</td>
                   <td>2017 - 2021</td>
-              </tr>
-              <tr>
+                </tr>
+                <tr>
                   <td>With Honors (JHS)</td>
                   <td>2020 - 2021</td>
-              </tr>
-              <tr>
+                </tr>
+                <tr>
                   <td>Asia Pacific College (SHS)</td>
                   <td>2021 - 2023</td>
-              </tr>
-              <tr>
+                </tr>
+                <tr>
                   <td>Asia Pacific College (College)</td>
                   <td>2023 - Current</td>
-              </tr>
-              <tr>
+                </tr>
+                <tr>
                   <td>Asia Pacific College Honor Student</td>
                   <td>2023 - 2024</td>
-              </tr>
-          </tbody>
-      </table>
-      <button class="close-btn">Close</button>
-  </div>
-</div>  
-
- 
+                </tr>
+              </tbody>
+            </table>
+            <button class="close-btn" @click="closeModal('schools')">Close</button>
+          </div>
+        </div>
   
         <div class="content">
           <div class="textBox">
@@ -144,85 +142,56 @@
   </template>
   
   <script setup>
+  import { ref, onMounted } from 'vue';
   import { Swiper, SwiperSlide } from "swiper/vue";
   import { EffectCards } from "swiper/modules";
   import "swiper/css";
   import "swiper/css/effect-cards";
   import { RouterLink } from 'vue-router';
   
-  document.addEventListener("DOMContentLoaded", function () {
-    function openModal(modalId) {
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.style.display = "block";
-        setTimeout(() => {
-          modal.classList.add("show");
-        }, 10);
-      }
-    }
+  const modals = ref({
+    about: false,
+    education: false,
+    goals: false,
+    hobbies: false,
+    schools: false,
+  });
   
-    function closeModal(modalId) {
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.classList.remove("show");
-        setTimeout(() => {
-          modal.style.display = "none";
-        }, 300);
-      }
-    }
+  const openModal = (modalName) => {
+    modals.value[modalName] = true;
+  };
   
-    // Add event listeners only if elements exist
-    const educationLink = document.getElementById("educationLink");
-    if (educationLink) {
-      educationLink.addEventListener("click", function (event) {
-        event.preventDefault();
-        openModal("educationModal");
-      });
-    }
+  const closeModal = (modalName) => {
+    modals.value[modalName] = false;
+  };
   
-    const goalsLink = document.getElementById("goalsLink");
-    if (goalsLink) {
-      goalsLink.addEventListener("click", function (event) {
-        event.preventDefault();
-        openModal("goalsModal");
-      });
-    }
-  
-    const hobbiesLink = document.getElementById("hobbiesLink");
-    if (hobbiesLink) {
-      hobbiesLink.addEventListener("click", function (event) {
-        event.preventDefault();
-        openModal("hobbiesModal");
-      });
-    }
-  
-    const schoolsLink = document.getElementById("schoolsLink");
-    if (schoolsLink) {
-      schoolsLink.addEventListener("click", function (event) {
-        event.preventDefault();
-        openModal("schoolsModal");
-      });
-    }
-  
-    document.querySelectorAll(".close-btn").forEach((button) => {
-      button.addEventListener("click", function () {
-        const modal = this.closest(".modal");
-        if (modal) {
-          closeModal(modal.id);
-        }
-      });
+  onMounted(() => {
+    document.getElementById("educationLink").addEventListener("click", (event) => {
+      event.preventDefault();
+      openModal("education");
     });
   
-    const learnMoreLink = document.getElementById("learnMoreLink");
-    if (learnMoreLink) {
-      learnMoreLink.addEventListener("click", function (event) {
-        event.preventDefault();
-        openModal("aboutModal");
-      });
-    }
+    document.getElementById("goalsLink").addEventListener("click", (event) => {
+      event.preventDefault();
+      openModal("goals");
+    });
+  
+    document.getElementById("hobbiesLink").addEventListener("click", (event) => {
+      event.preventDefault();
+      openModal("hobbies");
+    });
+  
+    document.getElementById("schoolsLink").addEventListener("click", (event) => {
+      event.preventDefault();
+      openModal("schools");
+    });
+  
+    document.getElementById("learnMoreLink").addEventListener("click", (event) => {
+      event.preventDefault();
+      openModal("about");
+    });
   });
   </script>
-
 
 <style>
 /* General Styles */
