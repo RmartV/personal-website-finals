@@ -165,32 +165,69 @@
     modals.value[modalName] = false;
   };
   
-  onMounted(() => {
-    document.getElementById("educationLink").addEventListener("click", (event) => {
-      event.preventDefault();
-      openModal("education");
+  document.addEventListener('DOMContentLoaded', function() {
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'block';
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+    }
+
+    document.getElementById('educationLink').addEventListener('click', function(event) {
+        event.preventDefault();
+        openModal('educationModal');
     });
-  
-    document.getElementById("goalsLink").addEventListener("click", (event) => {
-      event.preventDefault();
-      openModal("goals");
+
+    document.getElementById('goalsLink').addEventListener('click', function(event) {
+        event.preventDefault();
+        openModal('goalsModal');
     });
-  
-    document.getElementById("hobbiesLink").addEventListener("click", (event) => {
-      event.preventDefault();
-      openModal("hobbies");
+
+    document.getElementById('hobbiesLink').addEventListener('click', function(event) {
+        event.preventDefault();
+        openModal('hobbiesModal');
     });
-  
-    document.getElementById("schoolsLink").addEventListener("click", (event) => {
-      event.preventDefault();
-      openModal("schools");
+
+    document.getElementById('schoolsLink').addEventListener('click', function(event) {
+        event.preventDefault();
+        openModal('schoolsModal');
     });
-  
-    document.getElementById("learnMoreLink").addEventListener("click", (event) => {
-      event.preventDefault();
-      openModal("about");
+
+    document.querySelectorAll('.close-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const modal = this.closest('.modal');
+            if (modal) {
+                closeModal(modal.id);
+            }
+        });
     });
+
+ 
+    document.getElementById('learnMoreLink').addEventListener('click', function(event) {
+        event.preventDefault();
+        openModal('aboutModal');
+    });
+
+    var swiper = new Swiper(".mySwiper", {
+    effect: "cards",
+    grabCursor: true,
+    loop: true,
   });
+
+});
   </script>
 
 <style>
