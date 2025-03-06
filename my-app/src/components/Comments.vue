@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <button class="back-button" @click="navigateTo('/')"></button>
+    <button class="back-button" @click="goBack">Return to Home</button>
+
     
     <div class="comments-container">
       <div class="comment-form">
@@ -33,16 +34,17 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { supabase } from '../lib/supabaseClient';
 
+
 const router = useRouter();
 const name = ref('');
 const comment = ref('');
 const submissionStatus = ref(null);
 const comments = ref([]);
 const tableName = 'comments';
+const goBack = () => {
+  router.push('/');
+};
 
-function goBack() {
-  router.push('/PersonalProfile');
-}
 
 function formatDate(dateString) {
   return new Date(dateString).toLocaleDateString('en-US', {
