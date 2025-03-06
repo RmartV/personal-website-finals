@@ -3,7 +3,114 @@
       <section>
         <div class="circle"></div>
   
-  
+        <header>
+          <ul class="navigation">
+            <li><a href="#" id="educationLink">Education</a></li>
+            <li><a href="#" id="goalsLink">Goals</a></li>
+            <li><a href="#" id="hobbiesLink">Hobbies</a></li>
+            <li><a href="#" id="schoolsLink">Schools</a></li>
+            <li><RouterLink to="/comments">Comments</RouterLink></li>
+          </ul>
+        </header>
+
+        <div class="modal" id="aboutModal">
+  <div class="modal-content">
+      <h2>About Me</h2>
+      <p>My name is Ryan Elijah Luar and this is my experience throughout my course. <br> <br> My Experience from my course has a lot of ups and downs. I learned how to code and what are their functions and what are their purposes and also I crammed a lot of subjects during my freshman due to being overwhelmed. But overall, taking IT course is a great choice. <br> I live in Taguig City, I'm Currently 19 years old and I am the youngest member of the family. </p>
+      <button class="close-btn">Close</button>
+  </div>
+</div>
+
+<div class="modal" id="educationModal">
+  <div class="modal-content">
+      <h2>Education</h2>
+      <p>I am currently studying at Asia Pacific College, pursuing a Bachelor of Science in Information Technology, specializing in Mobile and Internet Applications.</p>
+      <button class="close-btn">Close</button>
+  </div>
+</div>
+
+<div class="modal" id="goalsModal">
+  <div class="modal-content">
+      <h2>Goals in Life</h2>
+      <ol class="goals-list">
+          <li>To get rich</li>
+          <li>To have my dream house and bike</li>
+          <li>To graduate college</li>
+      </ol>
+      <button class="close-btn">Close</button>
+  </div>
+</div>
+
+<div class="modal" id="hobbiesModal">
+  <div class="modal-content">
+      <h2>Hobbies & Interests</h2>
+      <table class="hobbies-table">
+          <thead>
+              <tr>
+                  <th>Hobbies</th>
+                  <th>Interests</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Playing Basketball</td>
+                  <td>Dancing</td>
+              </tr>
+              <tr>
+                  <td>Riding Motorcycle</td>
+                  <td>Exploring</td>
+              </tr>
+              <tr>
+                  <td>Going to the gym</td>
+                  <td></td>
+              </tr>
+          </tbody>
+      </table>
+      <button class="close-btn">Close</button>
+  </div>
+</div>
+
+<div class="modal" id="schoolsModal">
+  <div class="modal-content">
+      <h2>Education & Achievements</h2>
+      <table class="schools-table">
+          <thead>
+              <tr>
+                  <th>Education / Achievements</th>
+                  <th>Year</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Sto Niño Catholic School (Elementary)</td>
+                  <td>2015 - 2016</td>
+              </tr>
+              <tr>
+                  <td>Sto Niño Catholic School (JHS)</td>
+                  <td>2017 - 2021</td>
+              </tr>
+              <tr>
+                  <td>With Honors (JHS)</td>
+                  <td>2020 - 2021</td>
+              </tr>
+              <tr>
+                  <td>Asia Pacific College (SHS)</td>
+                  <td>2021 - 2023</td>
+              </tr>
+              <tr>
+                  <td>Asia Pacific College (College)</td>
+                  <td>2023 - Current</td>
+              </tr>
+              <tr>
+                  <td>Asia Pacific College Honor Student</td>
+                  <td>2023 - 2024</td>
+              </tr>
+          </tbody>
+      </table>
+      <button class="close-btn">Close</button>
+  </div>
+</div>  
+
  
   
         <div class="content">
@@ -33,7 +140,6 @@
       </section>
   
       <Comments />
-
     </body>
   </template>
   
